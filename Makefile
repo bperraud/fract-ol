@@ -6,12 +6,13 @@
 #    By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 00:51:10 by bperraud          #+#    #+#              #
-#    Updated: 2022/02/15 02:22:33 by bperraud         ###   ########.fr        #
+#    Updated: 2022/02/15 02:39:00 by bperraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### SOURCES FILES ###
-SRC			    = main.c
+#SRC			    = main.c
+SRC			    = fractol.c
 
 ### PATHS ###
 SDIR			= src
@@ -24,7 +25,6 @@ OBJ	  			= $(addprefix $(ODIR)/, $(SRC:.c=.o))
 ### COMPILATION ###
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror
-#CFLAGS			= -Wall -Wextra -Werror -Imlx -c
 LDLIBS			= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 RM				= rm -f
@@ -37,9 +37,14 @@ all:			$(NAME)
 ### LINK ###
 #$(NAME):		$(OBJ)
 #				$(MAKE) -C ./libft
+#				$(CC) $(OBJ) $(DFLAGS) libft/libft.a -o $(NAME)
 #				$(CC) $(OBJ) $(LDLIBS) libft/libft.a -o $(NAME)
+
 $(NAME):		$(OBJ)
-				$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
+				$(CC) $(OBJ) $(CFLAGS) -L libmlx -lmlx -o $(NAME)
+
+#$(NAME):		$(OBJ)
+#				$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
 
 ### OBJECTS ###
 $(ODIR)/%.o: 	$(SDIR)/%.c
