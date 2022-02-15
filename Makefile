@@ -6,13 +6,12 @@
 #    By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 00:51:10 by bperraud          #+#    #+#              #
-#    Updated: 2022/02/15 01:11:57 by bperraud         ###   ########.fr        #
+#    Updated: 2022/02/15 02:22:33 by bperraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 ### SOURCES FILES ###
-SOURCES			= main.c
+SRC			    = main.c
 
 ### PATHS ###
 SDIR			= src
@@ -20,8 +19,6 @@ HDIR			= include
 ODIR			= objs
 
 ### OBJECTS ###
-
-#SRC				= $(addprefix $(SDIR)/, $(SOURCES))
 OBJ	  			= $(addprefix $(ODIR)/, $(SRC:.c=.o))
 
 ### COMPILATION ###
@@ -38,15 +35,15 @@ NAME			= fractol
 all:			$(NAME)
 
 ### LINK ###
+#$(NAME):		$(OBJ)
+#				$(MAKE) -C ./libft
+#				$(CC) $(OBJ) $(LDLIBS) libft/libft.a -o $(NAME)
 $(NAME):		$(OBJ)
-				$(MAKE) -C ./libft
-				$(CC) $(OBJ) $(LDLIBS) libft/libft.a -o $(NAME)
+				$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
 
 ### OBJECTS ###
-#$(ODIR)/%.o: 	$(SDIR)/%.c
-$(ODIR)/%.o: 	%.c
-				$(CC) $(CFLAGS) $< -o $@
-
+$(ODIR)/%.o: 	$(SDIR)/%.c
+				$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 				$(RM) $(OBJ)
