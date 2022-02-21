@@ -24,9 +24,8 @@ OBJ	  			= $(addprefix $(ODIR)/, $(SRC:.c=.o))
 
 ### COMPILATION ###
 CC				= gcc
-#CFLAGS			= -Wall -Wextra -Werror
-CFLAGS			= -Wall -Wextra 
-LDLIBS			= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz 
+CFLAGS			= -Wall -Wextra -Werror
+LDLIBS			= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 RM				= rm -f
 
@@ -42,14 +41,14 @@ all:			$(NAME)
 #				$(CC) $(OBJ) $(LDLIBS) libft/libft.a -o $(NAME)
 
 $(NAME):		$(OBJ)
-				$(CC) $(OBJ)  $(LDLIBS) -o $(NAME)
+				$(CC) $(OBJ) $(CFLAGS) -L libmlx -lmlx -o $(NAME)
 
 #$(NAME):		$(OBJ)
 #				$(CC) $(OBJ) $(CFLAGS) -o $(NAME)
 
 ### OBJECTS ###
 $(ODIR)/%.o: 	$(SDIR)/%.c
-				$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3  -c $< -o $@
+				$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 				$(RM) $(OBJ)
