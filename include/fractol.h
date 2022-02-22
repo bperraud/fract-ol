@@ -6,7 +6,13 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/02/15 01:25:38 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/02/22 01:33:12 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+typedef struct s_complex {
+    float real;
+    float imag;
+} t_complex;
+
 
