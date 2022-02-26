@@ -16,3 +16,13 @@ typedef struct s_complex {
 } t_complex;
 
 
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
