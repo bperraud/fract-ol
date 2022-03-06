@@ -29,7 +29,16 @@ int	create_trgb(int t, int r, int g, int b)
 
 int	color_pixel(int n)
 {
-	return (n * 10000);
+	float	red;
+	float	green;
+	float	blue;
+	float	t;
+
+	t = (float) n / NMAX;
+	red = 9.0 * (1.0 - t) * t * t * t * 255.0;
+	green = 15.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
+	blue = 8.5 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
+	return (create_trgb(0, red, green, blue));
 }
 
 void	escape(t_data *img)
@@ -49,14 +58,10 @@ void	escape(t_data *img)
 		{
 			c.real = Remin + x * pixelSize;
 			c.imag = Immax - y * pixelSize;
-
-			//printf(" c real %f\n", c.real);
-			//printf(" c ima %f\n", c.imag);
-
 			z.real = 0;
 			z.imag = 0;
 			n = -1;
-			while (n++ < NMAX)
+			while (n++ < NMAX - 1)		// n = NMAX possible, sinon n > NMAX apres le ++
 			{
 				if (module(z) > 2)		//diverge
 					break;
