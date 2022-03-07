@@ -6,7 +6,7 @@
 #    By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 00:51:10 by bperraud          #+#    #+#              #
-#    Updated: 2022/03/01 20:36:55 by bperraud         ###   ########.fr        #
+#    Updated: 2022/03/07 02:12:53 by bperraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,14 +34,9 @@ NAME			= fractol
 all:			$(NAME)
 
 ### LINK ###
-#$(NAME):		$(OBJ)
-#				$(MAKE) -C ./libft
-#				$(CC) $(OBJ) $(DFLAGS) libft/libft.a -o $(NAME)
-#				$(CC) $(OBJ) $(LDLIBS) libft/libft.a -o $(NAME)
-
 $(NAME):		$(OBJ)
-				$(CC) $(OBJ) $(LDLIBS) -o $(NAME)
-
+				$(MAKE) -C ./libft
+				$(CC) $(OBJ) $(LDLIBS) libft/libft.a -o $(NAME)
 
 ### OBJECTS ###
 $(ODIR)/%.o: 	$(SDIR)/%.c

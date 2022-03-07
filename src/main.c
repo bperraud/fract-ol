@@ -6,14 +6,15 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 20:36:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/01 23:55:53 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/07 02:13:13 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../mlx_linux/mlx.h"
 #include "../include/fractol.h"
+#include "../libft/libft.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -26,39 +27,13 @@ int	main(void)
 	//my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
 	//my_mlx_pixel_put(&img, 5, 5, 16711680);
 
-/*
-	int i = -1;
-	while (i++ < WIDTH)
-		my_mlx_pixel_put(&img, i, 0, create_trgb(0, 255, 0, 0));
-
-	int j = 1;
-	while (j++ < HEIGHT )
-		my_mlx_pixel_put(&img, 0, j, create_trgb(0, 255, 0, 0));
-		*/
-
-	escape(&img);
-
-/*
-	int			n;
-	t_complex	z;
-	t_complex	c;
-
-	n = -1;
-	c.real = -1.5;
-	c.imag = 1;
-	z.real = 0;
-	z.imag = 0;
-	while (n++ < 10)
+	if (argc == 2)
 	{
-		printf(" z mod %f\n", module(z));
-		if (module(z) > 2)		//diverge
-			break;
-		z = add(mult(z, z), c); 	// z = z^2 + c
-		printf(" z real %f\n", z.real);
-		printf(" z ima %f\n", z.imag);
-		printf(" n %i\n", n);
+		if (ft_strncmp(argv[1], "julia", ft_strlen(argv[1])) == 0)
+			julia(&img);
+		else if (ft_strncmp(argv[1], "mandelbrot", ft_strlen(argv[1])) == 0)
+			mandelbrot(&img);
 	}
-*/
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
 }

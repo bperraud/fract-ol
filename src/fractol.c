@@ -41,13 +41,14 @@ int	color_pixel(int n)
 	return (create_trgb(0, red, green, blue));
 }
 
-void	escape(t_data *img)
+void	mandelbrot(t_data *img)
 {
 	int			y;
 	int			x;
 	int			n;
 	t_complex	z;
 	t_complex	c;
+
 	double pixelSize = (float)(Remax - Remin) / (float) WIDTH;
 	y = -1;
 	x = -1;
@@ -60,6 +61,38 @@ void	escape(t_data *img)
 			c.imag = Immax - y * pixelSize;
 			z.real = 0;
 			z.imag = 0;
+			n = -1;
+			while (n++ < NMAX - 1)		// n = NMAX possible, sinon n > NMAX apres le ++
+			{
+				if (module(z) > 2)		//diverge
+					break;
+				z = add(mult(z, z), c); 	// z = z^2 + c
+			}
+			my_mlx_pixel_put(img, x, y, color_pixel(n));
+		}
+	}
+}
+
+void	julia(t_data *img)
+{
+	int			y;
+	int			x;
+	int			n;
+	t_complex	z;
+	t_complex	c;
+
+	double pixelSize = (float)(Remax - Remin) / (float) WIDTH;
+	y = -1;
+	x = -1;
+	while (y++ < HEIGHT)
+	{
+		x = -1;
+		while (x++ < WIDTH)
+		{
+			z.real = Remin + x * pixelSize;
+			z.imag = Immax - y * pixelSize;
+			c.real = 0.285;
+			c.imag = 0.01;
 			n = -1;
 			while (n++ < NMAX - 1)		// n = NMAX possible, sinon n > NMAX apres le ++
 			{
