@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/07 02:07:45 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/07 02:27:02 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define HEIGHT 800
 # define WIDTH 	1300
 
-# define Remin -2
+# define CREAL -0.8
+# define CIMAG 0.156
+
+# define Remin -2.5
 # define Remax 1
 # define Immax 1
 

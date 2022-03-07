@@ -51,7 +51,6 @@ void	mandelbrot(t_data *img)
 
 	double pixelSize = (float)(Remax - Remin) / (float) WIDTH;
 	y = -1;
-	x = -1;
 	while (y++ < HEIGHT)
 	{
 		x = -1;
@@ -73,6 +72,11 @@ void	mandelbrot(t_data *img)
 	}
 }
 
+
+
+
+
+
 void	julia(t_data *img)
 {
 	int			y;
@@ -83,7 +87,6 @@ void	julia(t_data *img)
 
 	double pixelSize = (float)(Remax - Remin) / (float) WIDTH;
 	y = -1;
-	x = -1;
 	while (y++ < HEIGHT)
 	{
 		x = -1;
@@ -91,10 +94,10 @@ void	julia(t_data *img)
 		{
 			z.real = Remin + x * pixelSize;
 			z.imag = Immax - y * pixelSize;
-			c.real = 0.285;
-			c.imag = 0.01;
+			c.real = CREAL;
+			c.imag = CIMAG;
 			n = -1;
-			while (n++ < NMAX - 1)		// n = NMAX possible, sinon n > NMAX apres le ++
+			while (n++ < NMAX - 1)
 			{
 				if (module(z) > 2)		//diverge
 					break;
