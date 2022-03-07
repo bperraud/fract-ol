@@ -6,12 +6,12 @@
 #    By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 00:51:10 by bperraud          #+#    #+#              #
-#    Updated: 2022/03/07 02:12:53 by bperraud         ###   ########.fr        #
+#    Updated: 2022/03/07 17:34:43 by bperraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### SOURCES FILES ###
-SRC			    = main.c fractol.c complex.c
+SRC			    = main.c fractol.c complex.c window.c
 
 ### PATHS ###
 SDIR			= src
@@ -31,7 +31,7 @@ RM				= rm -f
 ### EXECUTABLE ###
 NAME			= fractol
 
-all:			$(NAME)
+all:			tmp $(NAME)
 
 ### LINK ###
 $(NAME):		$(OBJ)
@@ -42,12 +42,17 @@ $(NAME):		$(OBJ)
 $(ODIR)/%.o: 	$(SDIR)/%.c
 				$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3  -c $< -o $@
 
+tmp:
+				mkdir -p objs
+
 clean:
+				$(MAKE) clean -C ./libft
 				$(RM) $(OBJ)
 
 fclean:			clean
+				$(MAKE) fclean -C ./libft
 				$(RM) $(NAME)
 
 re:				fclean $(NAME)
 
-.PHONY:			all clean fclean re bonus
+.PHONY:			all clean fclean re
