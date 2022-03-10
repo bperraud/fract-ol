@@ -30,10 +30,8 @@ t_complex mult(t_complex c1, t_complex c2)
 
 t_complex absolute(t_complex c)
 {
-	if (c.imag < 0)
-		c.imag = -c.imag;
-	if (c.real < 0)
-		c.real = -c.real;
+	c.imag = fabs(c.imag);
+	c.real = fabs(c.real);
 	return (c);
 }
 

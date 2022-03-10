@@ -28,14 +28,14 @@ int	color_pixel(int color, int n)
 	}
 	else if (color == 2)
 	{
-		red = 18.0 * (1.0 - t) * t * t * t * 255.0;
-		green = 2.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
-		blue = 3.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
+		red = 30.0 * (1.0 - t) * t * t * t * 255.0;
+		green = 5.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
+		blue = 1.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
 	}
 	else
 	{
 		red = 5.0 * (1.0 - t) * t * t * t * 255.0;
-		green = 8.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
+		green = 2.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
 		blue = 2.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
 	}
 	return (create_trgb(0, red, green, blue));
