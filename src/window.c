@@ -6,13 +6,13 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:33:59 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/07 16:45:31 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:38:57 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-int	close(t_vars *vars)
+int	close_window(t_vars *vars)
 {
 	mlx_destroy_window(vars->mlx, vars->window);
 	exit(EXIT_SUCCESS);
@@ -52,10 +52,7 @@ int	key_controls(int keycode, t_vars *vars)
 	printf("%i", keycode);
 	fflush(stdout);
 	if (keycode == KEY_ESC)
-		close(vars);
-	if (keycode < 0)		// pas sur du tout
-		close(vars);
-
+		close_window(vars);
 
 	return (0);
 }
