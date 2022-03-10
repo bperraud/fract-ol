@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/11 00:08:34 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:19:41 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,16 @@ int			color_pixel(int color, int n);
 // window
 int			create_trgb(int t, int r, int g, int b);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int			close_window(t_win *vars);
+int			close_window(t_win *win);
 int			key_controls(int keycode, t_data *img);
 int			mouse_press_hook(int button, int x, int y, t_data *img);
 void		create_img(t_data *img);
 
 //move
-void		move_up(float move, t_data *img);
-void		move_right(float move, t_data *img);
-void		move_left(float move, t_data *img);
-void		move_down(float move, t_data *img);
+void		move_up(float move, t_range *range);
+void		move_right(float move, t_range *range);
+void		move_left(float move, t_range *range);
+void		move_down(float move, t_range *range);
 
 //zoom
 void		zoom(int x, int y, int in, t_data *img);
