@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 20:36:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/10 15:24:16 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:00:53 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,49 +53,6 @@ int	main(int argc, char **argv)
 	mlx_loop(img.window.mlx);
 }
 
-/*
-int	main(int argc, char **argv)
-{
-	t_data	img;
-	t_vars	my_window;
-
-	if (argc == 4 && valid_arg(argv))
-	{
-		my_window.mlx = mlx_init();
-		my_window.window = mlx_new_window(my_window.mlx, WIDTH, HEIGHT, "fractol");
-		img.img = mlx_new_image(my_window.mlx, WIDTH, HEIGHT);
-		img.addr = mlx_get_data_addr(img.img, &img.bpp, &img.line_length, &img.endian);
-		img.fractal = argv[1];
-		img.place = ft_atoi(argv[2]);
-		img.color = ft_atoi(argv[3]);
-
-		if (img.place == 1)		// place
-			setup_place1(&img);
-		if (img.place == 2)
-			setup_place2(&img);
-
-		fractal(&img);
-	}
-	else
-		arg_error();
-	mlx_put_image_to_window(my_window.mlx, my_window.window , img.img, 0, 0);
-	//mlx_hook(my_window.window, 2, 0, closed, &my_window);
-	//mlx_hook(my_window.window, 2, 1L<<0, closed, &my_window);=
-	//mlx_hook(my_window.window, 2, 1L<<0, key_controls, &my_window);
-
-	//mlx_key_hook(my_window.window, key_controls, &my_window);			// key pressed
-
-
-	mlx_key_hook(my_window.window, key_controls, &img);			// key pressed
-
-
-	//mlx_hook(my_window.window, 4, 1L<<0, mouse_press_hook, &my_window);
-	mlx_mouse_hook(my_window.window, mouse_press_hook, &my_window);		// mouse
-	//mlx_hook(mlx_win, 17, 0, close, &verra);
-	mlx_hook(my_window.window, 17, 0, close_window, &my_window);		// red cross clicked
-	mlx_loop(my_window.mlx);
-}
-*/
 
 int	valid_arg(char **argv)
 {

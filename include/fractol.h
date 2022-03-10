@@ -6,11 +6,11 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/10 16:23:04 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/10 18:00:17 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# define NMAX 110
+# define NMAX 50
 
 // reglage 1 pour julia
 # define CREAL -0.8
@@ -19,8 +19,8 @@
 # define HEIGHT 800
 # define WIDTH 	1300
 
-# define MOVE 	0.15
-
+# define MOVE 	0.08
+# define SCALE 	0.5
 
 // key map
 //# define KEY_ESC 53
@@ -100,7 +100,7 @@ void	move_down(float move, t_data *img);
 
 
 //zoom
-
+void	zoom(int x, int y, int in, t_data *img);
 
 //main
 void		arg_error();
