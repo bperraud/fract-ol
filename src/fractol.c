@@ -41,11 +41,11 @@ int	color_pixel(int color, int n)
 	return (create_trgb(0, red, green, blue));
 }
 
-
-void	burningship(t_data *img, int n, int x, int y, double pixelSize)
+void	burningship(t_data *img, int x, int y, double pixelSize)
 {
 	t_complex	z;
 	t_complex	c;
+	int			n;
 
 	while (y++ < HEIGHT)
 	{
@@ -60,7 +60,7 @@ void	burningship(t_data *img, int n, int x, int y, double pixelSize)
 			while (n++ < NMAX - 1)
 			{
 				if (module(z) > 2)
-					break;
+					break ;
 				z = mult(absolute(z), absolute(z));
 				z.imag = -z.imag;
 				z = add(z, c);
@@ -70,10 +70,11 @@ void	burningship(t_data *img, int n, int x, int y, double pixelSize)
 	}
 }
 
-void	julia(t_data *img, int n, int x, int y, double pixelSize)
+void	julia(t_data *img, int x, int y, double pixelSize)
 {
 	t_complex	z;
 	t_complex	c;
+	int			n;
 
 	while (y++ < HEIGHT)
 	{
@@ -88,7 +89,7 @@ void	julia(t_data *img, int n, int x, int y, double pixelSize)
 			while (n++ < NMAX - 1)
 			{
 				if (module(z) > 2)
-					break;
+					break ;
 				z = add(mult(z, z), c);
 			}
 			my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
@@ -96,11 +97,11 @@ void	julia(t_data *img, int n, int x, int y, double pixelSize)
 	}
 }
 
-
-void	mandelbrot(t_data *img, int n, int x, int y, double pixelSize)
+void	mandelbrot(t_data *img, int x, int y, double pixelSize)
 {
 	t_complex	z;
 	t_complex	c;
+	int			n;
 
 	while (y++ < HEIGHT)
 	{
@@ -115,7 +116,7 @@ void	mandelbrot(t_data *img, int n, int x, int y, double pixelSize)
 			while (n++ < NMAX - 1)
 			{
 				if (module(z) > 2)
-					break;
+					break ;
 				z = add(mult(z, z), c);
 			}
 			my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
@@ -127,17 +128,15 @@ void	fractal(t_data *img)
 {
 	int			y;
 	int			x;
-	double		pixelSize;
-	int			n;
+	double		pixel_size;
 
 	y = -1;
 	x = -1;
-	n = 0;
-	pixelSize = (float)(img->range.remax - img->range.remin) / (float) WIDTH;
+	pixel_size = (float)(img->range.remax - img->range.remin) / (float) WIDTH;
 	if (ft_strncmp(img->fractal, "mandelbrot", ft_strlen(img->fractal)) == 0)
-		mandelbrot(img, n, x, y, pixelSize);
+		mandelbrot(img, x, y, pixel_size);
 	else if (ft_strncmp(img->fractal, "julia", ft_strlen(img->fractal)) == 0)
-		julia(img, n, x, y, pixelSize);
+		julia(img, x, y, pixel_size);
 	else if (ft_strncmp(img->fractal, "burningship", ft_strlen(img->fractal)) == 0)
-		burningship(img, n, x, y, pixelSize);
+		burningship(img, x, y, pixel_size);
 }

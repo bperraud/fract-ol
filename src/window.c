@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:33:59 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/10 18:00:32 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/10 23:49:32 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(int*)dst = color;
+	*(int *)dst = color;
 }
 
 int	create_trgb(int t, int r, int g, int b)
@@ -32,13 +32,11 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-
 void	create_img(t_data *img)
 {
 	fractal(img);
-	mlx_put_image_to_window(img->window.mlx, img->window.window , img->img, 0, 0);
+	mlx_put_image_to_window(img->window.mlx, img->window.window, img->img, 0, 0);
 }
-
 
 int	key_controls(int keycode, t_data *img)
 {
@@ -55,8 +53,6 @@ int	key_controls(int keycode, t_data *img)
 		move_up(move, img);
 	else if (keycode == KEY_DOWN)
 		move_down(move, img);
-
 	create_img(img);
-
 	return (0);
 }
