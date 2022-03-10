@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/10 18:00:17 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:01:12 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,29 @@
 #include "../mlx_linux/mlx.h"
 #include "../libft/libft.h"
 
-
 typedef struct	s_range {
 	float remin;
 	float remax;
 	float immax;
 }	t_range;
 
-typedef struct	s_vars {
+typedef struct	s_win {
 	void	*mlx;
 	void	*window;
-}	t_vars;
+}	t_win;
 
 typedef struct	s_data {
 	void	*img;
 	char	*addr;
 	int		bpp;
-	int		line_length;
+	int		len;
 	int		endian;
 	int		color;
 	int		place;
 	char*	fractal;
-	t_vars	window;
+	t_win	win;
 	t_range range;
 }	t_data;
-
-
 
 typedef struct s_complex {
     float real;
@@ -78,9 +75,9 @@ float		module(t_complex c);
 t_complex	absolute(t_complex c);
 
 // fractol
-void		mandelbrot(t_data *img, int n, int x, int y, double pixelSize);
-void		julia(t_data *img, int n, int x, int y, double pixelSize);
-void		burningship(t_data *img, int n, int x, int y, double pixelSize);
+void		mandelbrot(t_data *img, int x, int y, double pixelSize);
+void		julia(t_data *img, int x, int y, double pixelSize);
+void		burningship(t_data *img, int x, int y, double pixelSize);
 void		fractal(t_data *img);
 int			color_pixel(int color, int n);
 

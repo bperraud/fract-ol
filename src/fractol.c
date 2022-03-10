@@ -133,10 +133,10 @@ void	fractal(t_data *img)
 	y = -1;
 	x = -1;
 	pixel_size = (float)(img->range.remax - img->range.remin) / (float) WIDTH;
-	if (ft_strncmp(img->fractal, "mandelbrot", ft_strlen(img->fractal)) == 0)
+	if (!ft_strncmp(img->fractal, "mandelbrot", ft_strlen(img->fractal)))
 		mandelbrot(img, x, y, pixel_size);
-	else if (ft_strncmp(img->fractal, "julia", ft_strlen(img->fractal)) == 0)
+	else if (!ft_strncmp(img->fractal, "julia", ft_strlen(img->fractal)))
 		julia(img, x, y, pixel_size);
-	else if (ft_strncmp(img->fractal, "burningship", ft_strlen(img->fractal)) == 0)
+	else if (!ft_strncmp(img->fractal, "burningship", ft_strlen(img->fractal)))
 		burningship(img, x, y, pixel_size);
 }
