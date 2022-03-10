@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/11 00:19:41 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:23:29 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # define NMAX 50
 
 // reglage 1 pour julia
-# define CREAL -0.8
-# define CIMAG 0.156
+
 
 # define HEIGHT 800
 # define WIDTH 	1300
@@ -62,6 +61,8 @@ typedef struct s_data {
 	int		color;
 	int		place;
 	char	*fractal;
+	float	c_real;
+	float	c_imag;
 	t_win	win;
 	t_range	range;
 }	t_data;

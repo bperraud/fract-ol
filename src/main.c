@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 20:36:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/11 00:01:09 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:26:50 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	setup_place1(t_data *img)
 		img->range.remin = -2.5;
 		img->range.remax = 1.5;
 		img->range.immax = 1.2;
+		img->c_real = -0.8;
+		img->c_imag = 0.156;
 	}
 	else if (!ft_strncmp(img->fractal, "burningship", ft_strlen(img->fractal)))
 	{
@@ -97,9 +99,11 @@ void	setup_place2(t_data *img)
 	}
 	else if (!ft_strncmp(img->fractal, "julia", ft_strlen(img->fractal)))
 	{
-		img->range.remin = -0.75;
-		img->range.remax = -0.58;
-		img->range.immax = 0.5;
+		img->range.remin = -2.5;
+		img->range.remax = 1.5;
+		img->range.immax = 1.2;
+		img->c_real = 0.285;
+		img->c_imag = 0.01;
 	}
 	else if (!ft_strncmp(img->fractal, "burningship", ft_strlen(img->fractal)))
 	{

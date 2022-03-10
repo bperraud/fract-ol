@@ -83,8 +83,8 @@ void	julia(t_data *img, int x, int y, double pixelSize)
 		{
 			z.real = img->range.remin + x * pixelSize;
 			z.imag = img->range.immax - y * pixelSize;
-			c.real = CREAL;
-			c.imag = CIMAG;
+			c.real = img->c_real;
+			c.imag = img->c_imag;
 			n = -1;
 			while (n++ < NMAX - 1)
 			{
