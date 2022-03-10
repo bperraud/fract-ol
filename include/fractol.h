@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/11 00:23:29 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:28:12 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,11 @@
 # define FRACTOL_H
 
 # define NMAX 50
-
-// reglage 1 pour julia
-
-
 # define HEIGHT 800
 # define WIDTH 	1300
-
 # define MOVE 	0.08
 # define SCALE 	0.5
 
-// key map
 //# define KEY_ESC 53
 # define KEY_ESC 65307
 # define KEY_UP 65362
@@ -32,7 +26,6 @@
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
 
-// mouse map
 # define MOUSE_IN 4
 # define MOUSE_OUT 5
 
