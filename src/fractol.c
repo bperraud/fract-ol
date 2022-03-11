@@ -28,15 +28,15 @@ int	color_pixel(int color, int n)
 	}
 	else if (color == 2)
 	{
-		red = 30.0 * (1.0 - t) * t * t * t * 255.0;
+		red = 17.0 * (1.0 - t) * t * t * t * 255.0;
 		green = 5.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
-		blue = 1.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
+		blue = 8.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
 	}
 	else
 	{
-		red = 5.0 * (1.0 - t) * t * t * t * 255.0;
-		green = 2.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
-		blue = 2.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
+		red = 2.0 * (1.0 - t) * t * t * t * 255.0;
+		green = 20.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
+		blue = 9.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
 	}
 	return (create_trgb(0, red, green, blue));
 }
@@ -47,10 +47,10 @@ void	burningship(t_data *img, int x, int y, double pixelSize)
 	t_complex	c;
 	int			n;
 
-	while (y++ < HEIGHT)
+	while (y++ < img->dim.height)// && y > img->dim.start_y)
 	{
 		x = -1;
-		while (x++ < WIDTH)
+		while (x++ < img->dim.width) // && x > img->dim.start_x)
 		{
 			c.real = img->range.remin + x * pixelSize;
 			c.imag = img->range.immax - y * pixelSize;
@@ -76,10 +76,10 @@ void	julia(t_data *img, int x, int y, double pixelSize)
 	t_complex	c;
 	int			n;
 
-	while (y++ < HEIGHT)
+	while (y++ < img->dim.height)
 	{
 		x = -1;
-		while (x++ < WIDTH)
+		while (x++ < img->dim.width)
 		{
 			z.real = img->range.remin + x * pixelSize;
 			z.imag = img->range.immax - y * pixelSize;
@@ -103,23 +103,26 @@ void	mandelbrot(t_data *img, int x, int y, double pixelSize)
 	t_complex	c;
 	int			n;
 
-	while (y++ < HEIGHT)
+	while (y++ < img->dim.height)
 	{
 		x = -1;
-		while (x++ < WIDTH)
+		while (x++ < img->dim.width)
 		{
-			c.real = img->range.remin + x * pixelSize;
-			c.imag = img->range.immax - y * pixelSize;
-			z.real = 0;
-			z.imag = 0;
-			n = -1;
-			while (n++ < NMAX - 1)
+			if (x >= img->dim.start_x)
 			{
-				if (module(z) > 2)
-					break ;
-				z = add(mult(z, z), c);
+				c.real = img->range.remin + x * pixelSize;
+				c.imag = img->range.immax - y * pixelSize;
+				z.real = 0;
+				z.imag = 0;
+				n = -1;
+				while (n++ < NMAX - 1)
+				{
+					if (module(z) > 2)
+						break ;
+					z = add(mult(z, z), c);
+				}
+				my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
 			}
-			my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
 		}
 	}
 }

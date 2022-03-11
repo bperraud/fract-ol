@@ -6,14 +6,14 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/11 00:28:12 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/11 18:24:55 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define NMAX 50
+# define NMAX 100
 # define HEIGHT 800
 # define WIDTH 	1300
 # define MOVE 	0.08
@@ -45,6 +45,13 @@ typedef struct s_win {
 	void	*window;
 }	t_win;
 
+typedef struct s_dim {
+	int		start_x;
+	int		start_y;
+	int		height;
+	int		width;
+}	t_dim;
+
 typedef struct s_data {
 	void	*img;
 	char	*addr;
@@ -56,6 +63,7 @@ typedef struct s_data {
 	char	*fractal;
 	float	c_real;
 	float	c_imag;
+	t_dim	dim;
 	t_win	win;
 	t_range	range;
 }	t_data;
@@ -82,23 +90,28 @@ int			color_pixel(int color, int n);
 int			create_trgb(int t, int r, int g, int b);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int			close_window(t_win *win);
-int			key_controls(int keycode, t_data *img);
-int			mouse_press_hook(int button, int x, int y, t_data *img);
 void		create_img(t_data *img);
+int			get_mlx_pixel(t_data *data, int x, int y);
 
 //move
+int			key_controls(int keycode, t_data *img);
 void		move_up(float move, t_range *range);
-void		move_right(float move, t_range *range);
-void		move_left(float move, t_range *range);
+void		move_right(float move, t_data *img);
 void		move_down(float move, t_range *range);
+void		move_left(float move, t_data *img);
 
 //zoom
+int			mouse_press_hook(int button, int x, int y, t_data *img);
 void		zoom(int x, int y, int in, t_data *img);
+
+//setup
+void		setup_place1(t_data *img);
+void		setup_place2(t_data *img);
+void		set_img(char **argv, t_data *img);
 
 //main
 void		arg_error(void);
-void		setup_place1(t_data *img);
-void		setup_place2(t_data *img);
 int			valid_arg(char **argv);
+
 
 #endif
