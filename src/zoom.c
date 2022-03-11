@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 16:18:40 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/10 23:48:10 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/11 05:01:46 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,9 @@ void	zoom(int x, int y, int in, t_data *img)
 	img->range.remin -= delta_re_prime * ((float) x / WIDTH);
 	img->range.remax += delta_re_prime * (1 - ((float) x / WIDTH));
 	img->range.immax += delta_im_prime * ((float) y / HEIGHT);
+}
+
+char	*get_mlx_pixel(t_data *data, int x, int y, int color)
+{
+	return data->addr + (y * data->len + x * (data->bpp / 8));
 }
