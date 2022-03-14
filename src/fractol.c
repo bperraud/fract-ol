@@ -108,7 +108,8 @@ void	mandelbrot(t_data *img, int x, int y, double pixelSize)
 		x = -1;
 		while (x++ < img->dim.width)
 		{
-			if (x >= img->dim.start_x)
+			//if (x >= img->dim.start_x )
+			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
 				c.real = img->range.remin + x * pixelSize;
 				c.imag = img->range.immax - y * pixelSize;

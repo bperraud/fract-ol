@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/11 18:24:55 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/14 16:57:16 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ int			get_mlx_pixel(t_data *data, int x, int y);
 
 //move
 int			key_controls(int keycode, t_data *img);
-void		move_up(float move, t_range *range);
+void		move_up(float move, t_data *img);
 void		move_right(float move, t_data *img);
-void		move_down(float move, t_range *range);
+void		move_down(float move, t_data *img);
 void		move_left(float move, t_data *img);
 
 //zoom
