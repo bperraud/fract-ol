@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/14 16:57:16 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:57:20 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_data {
 	char	*fractal;
 	float	c_real;
 	float	c_imag;
+	double	pixel_size;
 	t_dim	dim;
 	t_win	win;
 	t_range	range;
@@ -78,11 +79,12 @@ t_complex	add(t_complex c1, t_complex c2);
 t_complex	mult(t_complex c1, t_complex c2);
 float		module(t_complex c);
 t_complex	absolute(t_complex c);
+t_complex	mult_absolute(t_complex c1, t_complex c2);
 
 // fractol
-void		mandelbrot(t_data *img, int x, int y, double pixelSize);
-void		julia(t_data *img, int x, int y, double pixelSize);
-void		burningship(t_data *img, int x, int y, double pixelSize);
+void		mandelbrot(t_data *img, int x, int y, int n);
+void		julia(t_data *img, int x, int y, int n);
+void		burningship(t_data *img, int x, int y, int n);
 void		fractal(t_data *img);
 int			color_pixel(int color, int n);
 

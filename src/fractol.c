@@ -41,78 +41,78 @@ int	color_pixel(int color, int n)
 	return (create_trgb(0, red, green, blue));
 }
 
-void	burningship(t_data *img, int x, int y, double pixelSize)
+void	burningship(t_data *img, int x, int y, int n)
 {
 	t_complex	z;
 	t_complex	c;
-	int			n;
-
-	while (y++ < img->dim.height)// && y > img->dim.start_y)
-	{
-		x = -1;
-		while (x++ < img->dim.width) // && x > img->dim.start_x)
-		{
-			c.real = img->range.remin + x * pixelSize;
-			c.imag = img->range.immax - y * pixelSize;
-			z.real = 0;
-			z.imag = 0;
-			n = -1;
-			while (n++ < NMAX - 1)
-			{
-				if (module(z) > 2)
-					break ;
-				z = mult(absolute(z), absolute(z));
-				z.imag = -z.imag;
-				z = add(z, c);
-			}
-			my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
-		}
-	}
-}
-
-void	julia(t_data *img, int x, int y, double pixelSize)
-{
-	t_complex	z;
-	t_complex	c;
-	int			n;
 
 	while (y++ < img->dim.height)
 	{
 		x = -1;
 		while (x++ < img->dim.width)
 		{
-			z.real = img->range.remin + x * pixelSize;
-			z.imag = img->range.immax - y * pixelSize;
-			c.real = img->c_real;
-			c.imag = img->c_imag;
-			n = -1;
-			while (n++ < NMAX - 1)
-			{
-				if (module(z) > 2)
-					break ;
-				z = add(mult(z, z), c);
-			}
-			my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
-		}
-	}
-}
-
-void	mandelbrot(t_data *img, int x, int y, double pixelSize)
-{
-	t_complex	z;
-	t_complex	c;
-	int			n;
-
-	while (y++ < img->dim.height)
-	{
-		x = -1;
-		while (x++ < img->dim.width)
-		{
-			//if (x >= img->dim.start_x )
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
-				c.real = img->range.remin + x * pixelSize;
-				c.imag = img->range.immax - y * pixelSize;
+				c.real = img->range.remin + x * img->pixel_size;
+				c.imag = img->range.immax - y * img->pixel_size;
+				z.real = 0;
+				z.imag = 0;
+				n = -1;
+				while (n++ < NMAX - 1)
+				{
+					if (module(z) > 2)
+						break ;
+					z = add(mult_absolute(z, z), c);
+				}
+				my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
+			}
+		}
+	}
+}
+
+void	julia(t_data *img, int x, int y, int n)
+{
+	t_complex	z;
+	t_complex	c;
+
+	while (y++ < img->dim.height)
+	{
+		x = -1;
+		while (x++ < img->dim.width)
+		{
+			if (x >= img->dim.start_x && y >= img->dim.start_y)
+			{
+				z.real = img->range.remin + x * img->pixel_size;
+				z.imag = img->range.immax - y * img->pixel_size;
+				c.real = img->c_real;
+				c.imag = img->c_imag;
+				n = -1;
+				while (n++ < NMAX - 1)
+				{
+					if (module(z) > 2)
+						break ;
+					z = add(mult(z, z), c);
+				}
+				my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
+			}
+		}
+	}
+}
+
+void	mandelbrot(t_data *img, int x, int y, int n)
+{
+	t_complex	z;
+	t_complex	c;
+
+	while (y++ < img->dim.height)
+	{
+		x = -1;
+		while (x++ < img->dim.width)
+		{
+			if (x >= img->dim.start_x && y >= img->dim.start_y)
+			{
+				c.real = img->range.remin + x * img->pixel_size;
+				c.imag = img->range.immax - y * img->pixel_size;
 				z.real = 0;
 				z.imag = 0;
 				n = -1;
@@ -130,17 +130,18 @@ void	mandelbrot(t_data *img, int x, int y, double pixelSize)
 
 void	fractal(t_data *img)
 {
-	int			y;
-	int			x;
-	double		pixel_size;
+	int	y;
+	int	x;
+	int	n;
 
 	y = -1;
 	x = -1;
-	pixel_size = (float)(img->range.remax - img->range.remin) / (float) WIDTH;
+	n = -1;
+	img->pixel_size = (float)(img->range.remax - img->range.remin) / (float) WIDTH;
 	if (!ft_strncmp(img->fractal, "mandelbrot", ft_strlen(img->fractal)))
-		mandelbrot(img, x, y, pixel_size);
+		mandelbrot(img, x, y, n);
 	else if (!ft_strncmp(img->fractal, "julia", ft_strlen(img->fractal)))
-		julia(img, x, y, pixel_size);
+		julia(img, x, y, n);
 	else if (!ft_strncmp(img->fractal, "burningship", ft_strlen(img->fractal)))
-		burningship(img, x, y, pixel_size);
+		burningship(img, x, y, n);
 }

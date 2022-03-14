@@ -6,12 +6,12 @@
 #    By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 00:51:10 by bperraud          #+#    #+#              #
-#    Updated: 2022/03/10 16:24:06 by bperraud         ###   ########.fr        #
+#    Updated: 2022/03/11 15:46:06 by bperraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### SOURCES FILES ###
-SRC			    = main.c fractol.c complex.c window.c move.c zoom.c
+SRC			    = main.c fractol.c complex.c window.c move.c zoom.c setup.c
 
 ### PATHS ###
 SDIR			= src

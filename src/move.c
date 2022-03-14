@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 14:49:40 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/14 17:37:40 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/14 18:53:51 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,8 @@ void	move_up(float move, t_data *img)
 				my_mlx_pixel_put(img, x, y, get_mlx_pixel(img, x, y - diff));
 		}
 	}
-	img->range.immax += move * ( (float) img->dim.height / (float) img->dim.width);
+	img->range.immax += move * ((float) img->dim.height / (float) img->dim.width);
 	img->dim.height *= MOVE;
-}
-
-void	move_down(float move, t_data *img)
-{
-	int	diff;
-	int	x;
-	int	y;
-
-	diff = MOVE*img->dim.height;
-	x = -1;
-	while (x++ < img->dim.width)
-	{
-		y = -1;
-		while (y++ < img->dim.height)
-		{
-			if (y + diff < HEIGHT)
-				my_mlx_pixel_put(img, x, y, get_mlx_pixel(img, x, y + diff));
-		}
-	}
-	img->range.immax -= move * ((float) img->dim.height / (float) img->dim.width);
-	img->dim.start_y = img->dim.height - diff;
 }
 
 void	move_left(float move, t_data *img)
@@ -76,18 +55,39 @@ void	move_left(float move, t_data *img)
 	img->dim.width = MOVE * img->dim.width;
 }
 
+void	move_down(float move, t_data *img)
+{
+	int	diff;
+	int	x;
+	int	y;
+
+	diff = MOVE * img->dim.height;
+	x = -1;
+	while (x++ < img->dim.width)
+	{
+		y = -1;
+		while (y++ < img->dim.height)
+		{
+			if (y + diff < HEIGHT)
+				my_mlx_pixel_put(img, x, y, get_mlx_pixel(img, x, y + diff));
+		}
+	}
+	img->range.immax -= move * ((float) img->dim.height / (float) img->dim.width);
+	img->dim.start_y = img->dim.height - diff;
+}
+
 void	move_right(float move, t_data *img)
 {
 	int	diff;
 	int	x;
 	int	y;
 
-	diff = MOVE*img->dim.width;
-	y = -1;
-	while (y++ < img->dim.height)
+	diff = MOVE * img->dim.width;
+	x = -1;
+	while (x++ < img->dim.width)
 	{
-		x = -1;
-		while (x++ < img->dim.width)
+		y = -1;
+		while (y++ < img->dim.height)
 		{
 			if (x + diff < WIDTH)
 				my_mlx_pixel_put(img, x, y, get_mlx_pixel(img, x + diff, y));
@@ -95,7 +95,7 @@ void	move_right(float move, t_data *img)
 	}
 	img->range.remin += move;
 	img->range.remax += move;
-	img->dim.start_x = img->dim.width - MOVE*img->dim.width;
+	img->dim.start_x = img->dim.width - diff;
 }
 
 int	key_controls(int keycode, t_data *img)

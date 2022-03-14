@@ -30,6 +30,18 @@ t_complex	mult(t_complex c1, t_complex c2)
 	return (c);
 }
 
+t_complex	mult_absolute(t_complex c1, t_complex c2)
+{
+	t_complex	c;
+
+	c1 = absolute(c1);
+	c2 = absolute(c2);
+	c.real = c1.real * c2.real - c1.imag * c2.imag;
+	c.imag = c1.imag * c2.real + c1.real * c2.imag;
+	c.imag = -c.imag;
+	return (c);
+}
+
 t_complex	absolute(t_complex c)
 {
 	c.imag = fabs(c.imag);
