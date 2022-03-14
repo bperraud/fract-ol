@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/15 00:27:30 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/15 00:30:19 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 # define NMAX 100
 # define HEIGHT 800
-# define WIDTH 1300
-# define MOVE 0.08
-# define SCALE 0.5
+# define WIDTH 	1300
+# define MOVE 	0.08
+# define SCALE 	0.5
 
-# define KEY_ESC 65307
-# define KEY_UP 65362
-# define KEY_DOWN 65364
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
+# define KEY_ESC 53
+# define KEY_UP 126
+# define KEY_DOWN 125
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
 
 # define MOUSE_IN 4
 # define MOUSE_OUT 5
 
 # include "stdio.h"
 # include "math.h"
-# include "../mlx_linux/mlx.h"
+# include "../mlx_lib/mlx.h"
 # include "../libft/libft.h"
 
 typedef struct s_range {
