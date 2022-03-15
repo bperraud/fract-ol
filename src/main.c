@@ -6,15 +6,15 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 20:36:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/15 22:51:12 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/16 00:16:05 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_data img;
+	t_data	img;
 
 	if (argc == 4 && valid_arg(argv))
 	{
@@ -34,9 +34,11 @@ int main(int argc, char **argv)
 	mlx_loop(img.win.mlx);
 }
 
-int valid_arg(char **argv)
+int	valid_arg(char **argv)
 {
-	if (ft_strncmp(argv[1], "mandelbrot", ft_strlen("mandelbrot")) != 0 && ft_strncmp(argv[1], "julia", ft_strlen("julia")) != 0 && ft_strncmp(argv[1], "burningship", ft_strlen("burningship")) != 0)
+	if (!ft_strncmp(argv[1], "mandelbrot", ft_strlen("mandelbrot"))
+		&& !ft_strncmp(argv[1], "julia", ft_strlen("julia"))
+		&& !ft_strncmp(argv[1], "burningship", ft_strlen("burningship")))
 		return (0);
 	if (ft_atoi(argv[2]) != 1 && ft_atoi(argv[2]) != 2)
 		return (0);
@@ -45,7 +47,7 @@ int valid_arg(char **argv)
 	return (1);
 }
 
-void arg_error(void)
+void	arg_error(void)
 {
 	ft_putendl_fd("Arguments :", 1);
 	ft_putendl_fd("- fractal > 'julia' 'mandelbrot' 'burningship'", 1);
