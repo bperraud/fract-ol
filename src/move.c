@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bperraud <bperraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 14:49:40 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/14 18:53:51 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:21:53 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	move_up(float move, t_data *img)
 				my_mlx_pixel_put(img, x, y, get_mlx_pixel(img, x, y - diff));
 		}
 	}
-	img->range.immax += move * ((float) img->dim.height / (float) img->dim.width);
+	img->range.immax += move * ((float)img->dim.height / (float)img->dim.width);
 	img->dim.height *= MOVE;
 }
 
@@ -72,7 +72,7 @@ void	move_down(float move, t_data *img)
 				my_mlx_pixel_put(img, x, y, get_mlx_pixel(img, x, y + diff));
 		}
 	}
-	img->range.immax -= move * ((float) img->dim.height / (float) img->dim.width);
+	img->range.immax -= move * ((float)img->dim.height / (float)img->dim.width);
 	img->dim.start_y = img->dim.height - diff;
 }
 

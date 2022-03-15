@@ -137,7 +137,7 @@ void	fractal(t_data *img)
 	y = -1;
 	x = -1;
 	n = -1;
-	img->pixel_size = (float)(img->range.remax - img->range.remin) / (float) WIDTH;
+	img->pixel_size = (img->range.remax - img->range.remin) / (float) WIDTH;
 	if (!ft_strncmp(img->fractal, "mandelbrot", ft_strlen(img->fractal)))
 		mandelbrot(img, x, y, n);
 	else if (!ft_strncmp(img->fractal, "julia", ft_strlen(img->fractal)))

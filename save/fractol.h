@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/15 21:38:25 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:37:44 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define MOVE 0.08
 # define SCALE 0.5
 
-# define KEY_ESC 53
+# define KEY_ESC 65307
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361

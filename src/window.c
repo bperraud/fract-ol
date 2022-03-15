@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
+/*   By: bperraud <bperraud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 15:33:59 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/11 17:29:42 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/15 21:21:41 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_mlx_pixel(t_data *data, int x, int y)
 	char	*dst;
 
 	dst = data->addr + (y * data->len + x * (data->bpp / 8));
-	return *(int *)dst;
+	return (*(int *)dst);
 }
 
 int	create_trgb(int t, int r, int g, int b)

@@ -3,16 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+         #
+#    By: bperraud <bperraud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 00:51:10 by bperraud          #+#    #+#              #
-#    Updated: 2022/02/15 02:39:00 by bperraud         ###   ########.fr        #
+#    Updated: 2022/03/15 21:30:26 by bperraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ### SOURCES FILES ###
-SRC			    = main.c
-#SRC			    = fractol.c
+SRC			    = main.c fractol.c complex.c window.c move.c zoom.c setup.c
 
 ### PATHS ###
 SDIR			= src
@@ -41,6 +40,7 @@ all:			$(NAME)
 #				$(CC) $(OBJ) $(LDLIBS) libft/libft.a -o $(NAME)
 
 $(NAME):		$(OBJ)
+				$(MAKE) -C ./libft
 				$(CC) $(OBJ) $(CFLAGS) -L libmlx -lmlx -o $(NAME)
 
 #$(NAME):		$(OBJ)
