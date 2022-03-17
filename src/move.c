@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bperraud <bperraud@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 14:49:40 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/15 21:21:53 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/17 18:31:30 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	move_left(float move, t_data *img)
 	}
 	img->range.remin -= move;
 	img->range.remax -= move;
-	img->dim.width = MOVE * img->dim.width;
+	img->dim.width = MOVE * img->dim.width + 1;
 }
 
 void	move_down(float move, t_data *img)

@@ -49,7 +49,7 @@ void	burningship(t_data *img, int x, int y, int n)
 	while (y++ < img->dim.height)
 	{
 		x = -1;
-		while (x++ < img->dim.width)
+		while (++x < img->dim.width)
 		{
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
@@ -78,7 +78,7 @@ void	julia(t_data *img, int x, int y, int n)
 	while (y++ < img->dim.height)
 	{
 		x = -1;
-		while (x++ < img->dim.width)
+		while (++x < img->dim.width)
 		{
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
@@ -107,7 +107,7 @@ void	mandelbrot(t_data *img, int x, int y, int n)
 	while (y++ < img->dim.height)
 	{
 		x = -1;
-		while (x++ < img->dim.width)
+		while (++x < img->dim.width)
 		{
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
