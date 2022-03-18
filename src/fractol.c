@@ -60,7 +60,7 @@ void	burningship(t_data *img, int x, int y, int n)
 				n = -1;
 				while (n++ < NMAX - 1)
 				{
-					if (module(z) > 2)
+					if (dot(z) > 4)
 						break ;
 					z = add(mult_absolute(z, z), c);
 				}
@@ -89,7 +89,7 @@ void	julia(t_data *img, int x, int y, int n)
 				n = -1;
 				while (n++ < NMAX - 1)
 				{
-					if (module(z) > 2)
+					if (dot(z) > 4)
 						break ;
 					z = add(mult(z, z), c);
 				}
@@ -118,7 +118,7 @@ void	mandelbrot(t_data *img, int x, int y, int n)
 				n = -1;
 				while (n++ < NMAX - 1)
 				{
-					if (module(z) > 2)
+					if (dot(z) > 4)
 						break ;
 					z = add(mult(z, z), c);
 				}

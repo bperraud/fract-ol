@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/17 18:33:57 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/18 16:12:45 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_complex
 // complex
 t_complex	add(t_complex c1, t_complex c2);
 t_complex	mult(t_complex c1, t_complex c2);
-float		module(t_complex c);
+float		dot(t_complex c);
 t_complex	absolute(t_complex c);
 t_complex	mult_absolute(t_complex c1, t_complex c2);
 

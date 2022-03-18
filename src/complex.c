@@ -49,7 +49,8 @@ t_complex	absolute(t_complex c)
 	return (c);
 }
 
-float	module(t_complex c)
+float	dot(t_complex c)
 {
-	return (sqrt(c.real * c.real + c.imag * c.imag));
+
+	return (c.real * c.real + c.imag * c.imag);
 }
