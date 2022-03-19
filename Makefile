@@ -6,7 +6,7 @@
 #    By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 00:51:10 by bperraud          #+#    #+#              #
-#    Updated: 2022/03/17 17:41:29 by bperraud         ###   ########.fr        #
+#    Updated: 2022/03/19 15:03:20 by bperraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ OBJ	  			= $(addprefix $(ODIR)/, $(SRC:.c=.o))
 ### COMPILATION ###
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror
-LDLIBS			= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+LDLIBS			= -Lmlx -lmlx -framework OpenGL -framework AppKit
 
 RM				= rm -f
 
@@ -40,7 +40,7 @@ $(NAME):		$(OBJ)
 
 ### OBJECTS ###
 $(ODIR)/%.o: 	$(SDIR)/%.c
-				$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3  -c $< -o $@
+				$(CC) $(CFLAGS) -Imlx  -c $< -o $@
 
 tmp:
 				mkdir -p objs
