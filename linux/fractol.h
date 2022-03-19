@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/19 16:29:39 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/19 16:31:35 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,5 @@ void		reset(t_data *img);
 //main
 void		arg_error(void);
 int			valid_arg(char **argv);
-
 
 #endif
