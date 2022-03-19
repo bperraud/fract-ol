@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/19 15:06:07 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/19 16:29:39 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+# define KEY_C 99
 
 # define MOUSE_IN 4
 # define MOUSE_OUT 5
 
-# include "stdio.h"
 # include "math.h"
 # include "../mlx_linux/mlx.h"
 # include "../libft/libft.h"
@@ -109,6 +109,7 @@ void		zoom(int x, int y, int in, t_data *img);
 void		setup_place1(t_data *img);
 void		setup_place2(t_data *img);
 void		set_img(char **argv, t_data *img);
+void		reset(t_data *img);
 
 //main
 void		arg_error(void);

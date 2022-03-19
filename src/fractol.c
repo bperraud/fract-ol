@@ -12,7 +12,6 @@
 
 #include "../include/fractol.h"
 
-#include "stdio.h"
 int	color_pixel(int color, int n)
 {
 	float	red;
@@ -21,8 +20,6 @@ int	color_pixel(int color, int n)
 	float	t;
 
 	t = (float) n / NMAX;
-	printf("%f", t);
-	fflush(stdout);
 	if (color == 1)
 	{
 		red = 9.0 * (1.0 - t) * t * t * t * 255.0;
@@ -38,8 +35,8 @@ int	color_pixel(int color, int n)
 	else
 	{
 		red = 2.0 * (1.0 - t) * t * t * t * 255.0;
-		green = 20.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
-		blue = 9.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
+		green = 15.0 * (1.0 - t) * (1.0 - t) * t * t * 255.0;
+		blue = 3.0 * (1.0 - t) * (1.0 - t) * (1.0 - t) * t * 255.0;
 	}
 	return (create_trgb(0, red, green, blue));
 }

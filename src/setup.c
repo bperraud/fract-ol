@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 15:35:21 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/14 18:36:12 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/19 16:27:14 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,14 @@ void	set_img(char **argv, t_data *img)
 	img->fractal = argv[1];
 	img->place = ft_atoi(argv[2]);
 	img->color = ft_atoi(argv[3]);
+	img->dim.height = HEIGHT;
+	img->dim.width = WIDTH;
+	img->dim.start_x = 0;
+	img->dim.start_y = 0;
+}
+
+void	reset(t_data *img)
+{
 	img->dim.height = HEIGHT;
 	img->dim.width = WIDTH;
 	img->dim.start_x = 0;

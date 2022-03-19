@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/10 14:49:40 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/17 18:31:30 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/19 16:30:50 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,14 @@ int	key_controls(int keycode, t_data *img)
 		move_up(move, img);
 	else if (keycode == KEY_DOWN)
 		move_down(move, img);
+	else if (keycode == KEY_C)
+	{
+		if (img->color == 3)
+			img->color = 1;
+		else
+			img->color += 1;
+	}
 	create_img(img);
-	img->dim.height = HEIGHT;
-	img->dim.width = WIDTH;
-	img->dim.start_x = 0;
-	img->dim.start_y = 0;
+	reset(img);
 	return (0);
 }

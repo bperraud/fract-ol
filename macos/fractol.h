@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/18 16:12:45 by bperraud         ###   ########.fr       */
+/*   Updated: 2022/03/19 16:27:57 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define KEY_DOWN 125
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
+# define KEY_C 8
 
 # define MOUSE_IN 5
 # define MOUSE_OUT 4
@@ -113,6 +114,7 @@ void		zoom(int x, int y, int in, t_data *img);
 void		setup_place1(t_data *img);
 void		setup_place2(t_data *img);
 void		set_img(char **argv, t_data *img);
+void		reset(t_data *img);
 
 // main
 void		arg_error(void);
