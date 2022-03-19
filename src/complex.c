@@ -51,6 +51,5 @@ t_complex	absolute(t_complex c)
 
 float	dot(t_complex c)
 {
-
 	return (c.real * c.real + c.imag * c.imag);
 }
