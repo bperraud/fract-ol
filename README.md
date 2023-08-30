@@ -26,5 +26,8 @@ Arguments :
 
 ./fractol julia 1 1
 
+![julia](https://github.com/bperraud/fract-ol/assets/93911934/abcd6284-b78e-4a78-8a51-7b8a6628f483)
+
 /fractol burningship 2 3
 
+![burningship](https://github.com/bperraud/fract-ol/assets/93911934/59a49d33-14f5-47c7-911e-47b8a0d6aff3)
