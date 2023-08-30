@@ -6,7 +6,7 @@
 #    By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/15 00:51:10 by bperraud          #+#    #+#              #
-#    Updated: 2022/03/19 15:03:20 by bperraud         ###   ########.fr        #
+#    Updated: 2023/08/30 02:32:09 by bperraud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,12 @@ OBJ	  			= $(addprefix $(ODIR)/, $(SRC:.c=.o))
 ### COMPILATION ###
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror
-LDLIBS			= -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+ifeq ($(shell uname), Linux)
+	LDLIBS			= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+else
+	LDLIBS			= -Lmlx -lmlx -framework OpenGL -framework AppKit
+endif
 
 RM				= rm -f
 

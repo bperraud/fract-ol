@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2022/03/19 16:27:57 by bperraud         ###   ########.fr       */
+/*   Updated: 2023/08/30 02:35:05 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@
 # define MOUSE_OUT 4
 
 # include "math.h"
+
+# ifdef LINUX
+# include "../mlx_linux/mlx.h"
+# else
 # include "../mlx/mlx.h"
+# endif
 # include "../libft/libft.h"
 
 typedef struct s_range
