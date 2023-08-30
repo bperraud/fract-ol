@@ -6,7 +6,7 @@
 /*   By: bperraud <bperraud@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 01:25:37 by bperraud          #+#    #+#             */
-/*   Updated: 2023/08/30 02:35:05 by bperraud         ###   ########.fr       */
+/*   Updated: 2023/08/30 02:49:48 by bperraud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,21 @@
 # define MOVE 0.08
 # define SCALE 0.5
 
-# define KEY_ESC 53
-# define KEY_UP 126
-# define KEY_DOWN 125
-# define KEY_LEFT 123
-# define KEY_RIGHT 124
-# define KEY_C 8
+# ifdef LINUX
+	# define KEY_ESC 65307
+	# define KEY_UP 65362
+	# define KEY_DOWN 65364
+	# define KEY_LEFT 65361
+	# define KEY_RIGHT 65363
+	# define KEY_C 99
+# else
+	# define KEY_ESC 53
+	# define KEY_UP 126
+	# define KEY_DOWN 125
+	# define KEY_LEFT 123
+	# define KEY_RIGHT 124
+	# define KEY_C 8
+# endif
 
 # define MOUSE_IN 5
 # define MOUSE_OUT 4
@@ -32,10 +41,11 @@
 # include "math.h"
 
 # ifdef LINUX
-# include "../mlx_linux/mlx.h"
+	# include "../mlx_linux/mlx.h"
 # else
-# include "../mlx/mlx.h"
+	# include "../mlx/mlx.h"
 # endif
+
 # include "../libft/libft.h"
 
 typedef struct s_range
