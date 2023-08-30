@@ -11,7 +11,9 @@ Arguments :
 - fractal > 'julia' 'mandelbrot' 'burningship'
 - place > '1' '2'
 - color > '1' '2' '3'
-Controls :
+
+## Controls
+
 - press ESC to quit
 - press arrow keys to move the view
 - press mouse wheel to zoom in/out
