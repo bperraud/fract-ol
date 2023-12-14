@@ -22,8 +22,8 @@ ODIR			= objs
 OBJ	  			= $(addprefix $(ODIR)/, $(SRC:.c=.o))
 
 ### COMPILATION ###
-CC				= gcc
-CFLAGS			= -Wall -Wextra -Werror
+CC				= gcc -O3
+#CFLAGS			= -Wall -Wextra -Werror
 
 ifeq ($(shell uname), Linux)
 	LDLIBS			= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz

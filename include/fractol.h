@@ -13,11 +13,13 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# define NMAX 200
-# define HEIGHT 800
-# define WIDTH 1300
+# define NMAX 100
+# define HEIGHT 700
+# define WIDTH 1200
 # define MOVE 0.08
 # define SCALE 0.5
+
+# define LINUX 1
 
 # ifdef LINUX
 	# define KEY_ESC 65307
@@ -39,6 +41,7 @@
 # define MOUSE_OUT 4
 
 # include "math.h"
+# include <stdio.h>
 
 # ifdef LINUX
 	# include "../mlx_linux/mlx.h"
@@ -101,9 +104,9 @@ t_complex	absolute(t_complex c);
 t_complex	mult_absolute(t_complex c1, t_complex c2);
 
 // fractol
-void		mandelbrot(t_data *img, int x, int y, int n);
-void		julia(t_data *img, int x, int y, int n);
-void		burningship(t_data *img, int x, int y, int n);
+void		mandelbrot(t_data *img);
+void		julia(t_data *img);
+void		burningship(t_data *img);
 void		fractal(t_data *img);
 int			color_pixel(int color, int n);
 

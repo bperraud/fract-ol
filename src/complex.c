@@ -12,7 +12,7 @@
 
 #include "../include/fractol.h"
 
-t_complex	add(t_complex c1, t_complex c2)
+inline t_complex	add(t_complex c1, t_complex c2)
 {
 	t_complex	c;
 
@@ -21,35 +21,37 @@ t_complex	add(t_complex c1, t_complex c2)
 	return (c);
 }
 
-t_complex	mult(t_complex c1, t_complex c2)
+inline t_complex	mult(t_complex c1, t_complex c2)
 {
 	t_complex	c;
 
-	c.real = c1.real * c2.real - c1.imag * c2.imag;
 	c.imag = c1.imag * c2.real + c1.real * c2.imag;
+	c.real = c1.real * c2.real - c1.imag * c2.imag;
 	return (c);
 }
 
-t_complex	mult_absolute(t_complex c1, t_complex c2)
+inline t_complex	mult_absolute(t_complex c1, t_complex c2)
 {
 	t_complex	c;
 
-	c1 = absolute(c1);
-	c2 = absolute(c2);
+    c1.imag = fabs(c1.imag);
+	c1.real = fabs(c1.real);
+	c2.imag = fabs(c2.imag);
+	c2.real = fabs(c2.real);
 	c.real = c1.real * c2.real - c1.imag * c2.imag;
 	c.imag = c1.imag * c2.real + c1.real * c2.imag;
 	c.imag = -c.imag;
 	return (c);
 }
 
-t_complex	absolute(t_complex c)
+inline t_complex	absolute(t_complex c)
 {
 	c.imag = fabs(c.imag);
 	c.real = fabs(c.real);
 	return (c);
 }
 
-float	dot(t_complex c)
+inline float	dot(t_complex c)
 {
 	return (c.real * c.real + c.imag * c.imag);
 }

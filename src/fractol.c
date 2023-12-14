@@ -41,15 +41,20 @@ int	color_pixel(int color, int n)
 	return (create_trgb(0, red, green, blue));
 }
 
-void	burningship(t_data *img, int x, int y, int n)
+void	burningship(t_data *img)
 {
 	t_complex	z;
 	t_complex	c;
+    int x;
+    int y;
+    int n;
 
+    n = 0;
+    y = 0;
 	while (y++ < img->dim.height)
 	{
-		x = -1;
-		while (++x < img->dim.width)
+		x = 0;
+		while (x++ < img->dim.width)
 		{
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
@@ -70,15 +75,19 @@ void	burningship(t_data *img, int x, int y, int n)
 	}
 }
 
-void	julia(t_data *img, int x, int y, int n)
+void	julia(t_data *img)
 {
 	t_complex	z;
 	t_complex	c;
 
-	while (y++ < img->dim.height)
+    int x;
+    int n;
+
+    n = 0;
+	for (int y = 0; y <= img->dim.height; y++)
 	{
-		x = -1;
-		while (++x < img->dim.width)
+		x = 0;
+		while (x++ < img->dim.width)
 		{
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
@@ -99,15 +108,17 @@ void	julia(t_data *img, int x, int y, int n)
 	}
 }
 
-void	mandelbrot(t_data *img, int x, int y, int n)
+void	mandelbrot(t_data *img)
 {
 	t_complex	z;
 	t_complex	c;
 
-	while (y++ < img->dim.height)
+    int n;
+    #pragma omp parallel for
+	for (int y = 0; y <= img->dim.height; y++)
 	{
-		x = -1;
-		while (++x < img->dim.width)
+        #pragma omp parallel for
+		for (int x = 0; x < img->dim.width; x++)
 		{
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
@@ -118,7 +129,7 @@ void	mandelbrot(t_data *img, int x, int y, int n)
 				n = -1;
 				while (n++ < NMAX - 1)
 				{
-					if (dot(z) > 4)
+					if (z.real * z.real + z.imag * z.imag > 4)
 						break ;
 					z = add(mult(z, z), c);
 				}
@@ -128,20 +139,21 @@ void	mandelbrot(t_data *img, int x, int y, int n)
 	}
 }
 
+#include <time.h>
+
 void	fractal(t_data *img)
 {
-	int	y;
-	int	x;
-	int	n;
+    clock_t start_time = clock();
 
-	y = -1;
-	x = -1;
-	n = -1;
 	img->pixel_size = (img->range.remax - img->range.remin) / (float) WIDTH;
 	if (!ft_strncmp(img->fractal, "mandelbrot", ft_strlen(img->fractal)))
-		mandelbrot(img, x, y, n);
+		mandelbrot(img);
 	else if (!ft_strncmp(img->fractal, "julia", ft_strlen(img->fractal)))
-		julia(img, x, y, n);
+        julia(img);
 	else if (!ft_strncmp(img->fractal, "burningship", ft_strlen(img->fractal)))
-		burningship(img, x, y, n);
+        burningship(img);
+
+    double cpu_time_used = ((double) (clock() - start_time)) / CLOCKS_PER_SEC;
+
+    printf("Le temps d'exécution est %f secondes.\n", cpu_time_used);
 }

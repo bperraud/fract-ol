@@ -36,9 +36,9 @@ int	main(int argc, char **argv)
 
 int	valid_arg(char **argv)
 {
-	if (!ft_strncmp(argv[1], "mandelbrot", ft_strlen("mandelbrot"))
-		&& !ft_strncmp(argv[1], "julia", ft_strlen("julia"))
-		&& !ft_strncmp(argv[1], "burningship", ft_strlen("burningship")))
+	if (ft_strncmp(argv[1], "mandelbrot", ft_strlen("mandelbrot"))
+		&& ft_strncmp(argv[1], "julia", ft_strlen("julia"))
+		&& ft_strncmp(argv[1], "burningship", ft_strlen("burningship")))
 		return (0);
 	if (ft_atoi(argv[2]) != 1 && ft_atoi(argv[2]) != 2)
 		return (0);
