@@ -45,16 +45,13 @@ void	burningship(t_data *img)
 {
 	t_complex	z;
 	t_complex	c;
-    int x;
-    int y;
-    int n;
 
-    n = 0;
-    y = 0;
-	while (y++ < img->dim.height)
+    int n;
+    #pragma omp parallel for
+	for (int y = 0; y <= img->dim.height; y++)
 	{
-		x = 0;
-		while (x++ < img->dim.width)
+        #pragma omp parallel for
+		for (int x = 0; x < img->dim.width; x++)
 		{
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
@@ -62,10 +59,10 @@ void	burningship(t_data *img)
 				c.imag = img->range.immax - y * img->pixel_size;
 				z.real = 0;
 				z.imag = 0;
-				n = -1;
+				n = 0;
 				while (n++ < NMAX - 1)
 				{
-					if (dot(z) > 4)
+					if (z.real * z.real + z.imag * z.imag > 4)
 						break ;
 					z = add(mult_absolute(z, z), c);
 				}
@@ -80,14 +77,12 @@ void	julia(t_data *img)
 	t_complex	z;
 	t_complex	c;
 
-    int x;
     int n;
-
-    n = 0;
+    #pragma omp parallel for
 	for (int y = 0; y <= img->dim.height; y++)
 	{
-		x = 0;
-		while (x++ < img->dim.width)
+        #pragma omp parallel for
+		for (int x = 0; x < img->dim.width; x++)
 		{
 			if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
@@ -95,10 +90,10 @@ void	julia(t_data *img)
 				z.imag = img->range.immax - y * img->pixel_size;
 				c.real = img->c_real;
 				c.imag = img->c_imag;
-				n = -1;
+				n = 0;
 				while (n++ < NMAX - 1)
 				{
-					if (dot(z) > 4)
+					if (z.real * z.real + z.imag * z.imag > 4)
 						break ;
 					z = add(mult(z, z), c);
 				}
@@ -126,7 +121,7 @@ void	mandelbrot(t_data *img)
 				c.imag = img->range.immax - y * img->pixel_size;
 				z.real = 0;
 				z.imag = 0;
-				n = -1;
+				n = 0;
 				while (n++ < NMAX - 1)
 				{
 					if (z.real * z.real + z.imag * z.imag > 4)
@@ -154,6 +149,5 @@ void	fractal(t_data *img)
         burningship(img);
 
     double cpu_time_used = ((double) (clock() - start_time)) / CLOCKS_PER_SEC;
-
     printf("Le temps d'exécution est %f secondes.\n", cpu_time_used);
 }
