@@ -84,7 +84,7 @@ void	julia(t_data *img)
         #pragma omp parallel for
 		for (int x = 0; x < img->dim.width; x++)
 		{
-			if (x >= img->dim.start_x && y >= img->dim.start_y)
+            if (x >= img->dim.start_x && y >= img->dim.start_y)
 			{
 				z.real = img->range.remin + x * img->pixel_size;
 				z.imag = img->range.immax - y * img->pixel_size;
@@ -95,13 +95,17 @@ void	julia(t_data *img)
 				{
 					if (z.real * z.real + z.imag * z.imag > 4)
 						break ;
-					z = add(mult(z, z), c);
+                    float save = z.real;
+                    z.real = z.real * z.real - z.imag * z.imag + c.real;
+                    z.imag = 2 * save * z.imag + c.imag;
 				}
 				my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
 			}
 		}
 	}
 }
+
+
 
 void	mandelbrot(t_data *img)
 {
@@ -119,14 +123,16 @@ void	mandelbrot(t_data *img)
 			{
 				c.real = img->range.remin + x * img->pixel_size;
 				c.imag = img->range.immax - y * img->pixel_size;
-				z.real = 0;
-				z.imag = 0;
+                z.real = c.real;
+				z.imag = c.imag;
 				n = 0;
 				while (n++ < NMAX - 1)
 				{
 					if (z.real * z.real + z.imag * z.imag > 4)
 						break ;
-					z = add(mult(z, z), c);
+                    float save = z.real;
+                    z.real = z.real * z.real - z.imag * z.imag + c.real;
+                    z.imag = 2 * save * z.imag + c.imag;
 				}
 				my_mlx_pixel_put(img, x, y, color_pixel(img->color, n));
 			}

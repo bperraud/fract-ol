@@ -14,8 +14,8 @@
 # define FRACTOL_H
 
 # define NMAX 100
-# define HEIGHT 700
-# define WIDTH 1200
+# define HEIGHT 800
+# define WIDTH 1300
 # define MOVE 0.08
 # define SCALE 0.5
 
